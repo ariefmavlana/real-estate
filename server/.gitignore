@@ -1,0 +1,5 @@
+# Jangan track node_modules
+node_modules/
+
+# Ignore environment variables
+.env
