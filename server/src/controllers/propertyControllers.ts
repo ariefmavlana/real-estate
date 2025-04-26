@@ -218,7 +218,7 @@ export const createProperty = async (
                 return uploadResult.Location
             })
         )
-
+        // https://nominatim.org/release-docs/latest/api/Search/
         const geocodingUrl = `https://nominatim.openstreetmap.org/search?${new URLSearchParams(
             {
                 street: address,
