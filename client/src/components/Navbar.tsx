@@ -122,7 +122,7 @@ const Navbar = () => {
                                 onClick={() =>
                                     router.push(
                                         authUser.userRole?.toLowerCase() === 'manager'
-                                        ? '/managers/propreties'
+                                        ? '/managers/properties'
                                         : '/tenants/favorites',
                                         { scroll: false }
                                     )
