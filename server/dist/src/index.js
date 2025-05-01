@@ -16,7 +16,7 @@ const managerRoutes_1 = __importDefault(require("./routes/managerRoutes"));
 const propertyRoutes_1 = __importDefault(require("./routes/propertyRoutes"));
 const leaseRoutes_1 = __importDefault(require("./routes/leaseRoutes"));
 const applicationRoutes_1 = __importDefault(require("./routes/applicationRoutes"));
-/* CONFIGURATION */
+/* CONFIGURATIONS */
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -28,15 +28,15 @@ app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)());
 /* ROUTES */
 app.get("/", (req, res) => {
-    res.send("This is Home Route");
+    res.send("This is home route");
 });
 app.use("/applications", applicationRoutes_1.default);
 app.use("/properties", propertyRoutes_1.default);
 app.use("/leases", leaseRoutes_1.default);
-app.use("/tenants", (0, authMiddleware_1.authMiddleware)(['tenant']), tenantRoutes_1.default);
-app.use("/managers", (0, authMiddleware_1.authMiddleware)(['manager']), managerRoutes_1.default);
+app.use("/tenants", (0, authMiddleware_1.authMiddleware)(["tenant"]), tenantRoutes_1.default);
+app.use("/managers", (0, authMiddleware_1.authMiddleware)(["manager"]), managerRoutes_1.default);
 /* SERVER */
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const port = Number(process.env.PORT) || 3001;
+app.listen(port, "0.0.0.0", () => {
     console.log(`Server running on port ${port}`);
 });

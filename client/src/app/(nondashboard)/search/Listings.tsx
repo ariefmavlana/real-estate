@@ -2,14 +2,14 @@
 
 import Card from '@/components/Card'
 import CardCompact from '@/components/CardCompact'
-import { useAddFavoritePropertyMutation, useGetAuthUserQuery, useGetPropertiesQuery, useGetTenantsQuery, useRemoveFavoritePropertyMutation } from '@/state/api'
+import { useAddFavoritePropertyMutation, useGetAuthUserQuery, useGetPropertiesQuery,  useGetTenantQuery, useRemoveFavoritePropertyMutation } from '@/state/api'
 import { useAppSelector } from '@/state/redux'
 import { Property } from '@/types/prismaTypes'
 import React from 'react'
 
 const Listings = () => {
     const { data: authUser } = useGetAuthUserQuery()
-    const { data: tenant } = useGetTenantsQuery(
+    const { data: tenant } =  useGetTenantQuery(
         authUser?.cognitoInfo?.userId || "",
         {
             skip: !authUser?.cognitoInfo?.userId

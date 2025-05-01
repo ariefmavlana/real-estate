@@ -12,7 +12,7 @@ import propertyRoutes from "./routes/propertyRoutes"
 import leaseRoutes from "./routes/leaseRoutes"
 import applicationRoutes from "./routes/applicationRoutes"
 
-/* CONFIGURATION */
+/* CONFIGURATIONS */
 dotenv.config()
 const app = express()
 app.use(express.json())
@@ -25,17 +25,17 @@ app.use(cors())
 
 /* ROUTES */
 app.get("/", (req, res) => {
-    res.send("This is Home Route")
+  res.send("This is home route")
 })
 
 app.use("/applications", applicationRoutes)
 app.use("/properties", propertyRoutes)
 app.use("/leases", leaseRoutes)
-app.use("/tenants", authMiddleware(['tenant']), tenantRoutes)
-app.use("/managers", authMiddleware(['manager']), managerRoutes)
+app.use("/tenants", authMiddleware(["tenant"]), tenantRoutes)
+app.use("/managers", authMiddleware(["manager"]), managerRoutes)
 
 /* SERVER */
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+const port = Number(process.env.PORT) || 3001
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on port ${port}`)
 })
